@@ -200,7 +200,7 @@ const capitalizar = (texto: string) => {
         </div>
 
         <!-- CTA -->
-        <a href="#contacto" class="btn-primary w-full text-center block" onclick="document.getElementById('property-modal').classList.remove('active')">
+        <a href="#contacto" class="btn-consultar" onclick="document.getElementById('property-modal').classList.remove('active')">
           Consultar por esta propiedad
         </a>
       </div>
@@ -365,6 +365,25 @@ const capitalizar = (texto: string) => {
     border-radius: 9999px;
     font-size: 0.875rem;
     font-weight: 500;
+  }
+
+  .btn-consultar {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #8BB31D;
+    color: white;
+    padding: 0.875rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-consultar:hover {
+    background-color: #7aa019;
+    box-shadow: 0 8px 20px rgba(139, 179, 29, 0.4);
+    transform: translateY(-2px);
   }
 </style>
 
