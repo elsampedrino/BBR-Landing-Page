@@ -1,0 +1,503 @@
+---
+// VentasCasas component - BBR Grupo Inmobiliario
+// Casas en Venta desde el catálogo de propiedades
+
+const casasVenta = [
+  {
+    id: "PROP-001",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Colón al 1100", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 139000, moneda: "USD" },
+    descripcion: "Excelente ubicación en zona céntrica y comercial de Ramallo. Cuenta con todos los servicios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830381/bbr/prop-001/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830382/bbr/prop-001/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830383/bbr/prop-001/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "462 m²", superficie_cubierta: "140 m²" },
+    detalles: ["patio", "pileta", "quincho", "parrilla"]
+  },
+  {
+    id: "PROP-002",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "La Rioja al 600", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 250000, moneda: "USD" },
+    descripcion: "Propiedad totalmente nueva en zona muy comercial. Cuenta con todos los servicios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830384/bbr/prop-002/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830384/bbr/prop-002/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830385/bbr/prop-002/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 3, banios: 2, superficie_total: "235 m²", superficie_cubierta: "170 m²" },
+    detalles: ["cochera", "patio", "pileta"]
+  },
+  {
+    id: "PROP-003",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Cucurrullo al 300", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 40000, moneda: "USD" },
+    descripcion: "Excelente propiedad con todos los servicios de agua corriente, cloacas y electricidad.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830386/bbr/prop-003/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830387/bbr/prop-003/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830388/bbr/prop-003/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 3, banios: 1, superficie_total: "600 m²", superficie_cubierta: "125 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  },
+  {
+    id: "PROP-004",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Rafael Obligado al 400", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 70000, moneda: "USD" },
+    descripcion: "Propiedad en cercanías una escuela primaria, secundaria y paseo del puerto. Cuenta con todos los servicios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830388/bbr/prop-004/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830389/bbr/prop-004/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830390/bbr/prop-004/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "253 m²", superficie_cubierta: "90 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  },
+  {
+    id: "PROP-005",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Cesar Niz al 100", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 80000, moneda: "USD" },
+    descripcion: "Propiedad a pocas cuadras de la plaza principal José María Bustos y el centro comercial de Ramallo. Excelente estado de conservación.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830392/bbr/prop-005/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830394/bbr/prop-005/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830395/bbr/prop-005/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "120 m²", superficie_cubierta: "120 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  },
+  {
+    id: "PROP-006",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Villa Ramallo",
+    direccion: { calle: "Malvinas Argentinas al 800", barrio: "Villa Ramallo", ciudad: "Villa Ramallo" },
+    precio: { valor: 35000, moneda: "USD" },
+    descripcion: "Excelente ubicación en barrio de gran tranquilidad de la ciudad. Cuenta con todos los servicios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830396/bbr/prop-006/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830397/bbr/prop-006/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830398/bbr/prop-006/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "290 m²", superficie_cubierta: "64 m²" },
+    detalles: ["cochera", "patio"]
+  },
+  {
+    id: "PROP-007",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Colón al 1100", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 140000, moneda: "USD" },
+    descripcion: "Excelente ubicación en zona céntrica. La vivienda se encuentra apta para vivir. Cuenta con todos los servicios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830399/bbr/prop-007/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830400/bbr/prop-007/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830401/bbr/prop-007/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "420 m²", superficie_cubierta: "70 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  },
+  {
+    id: "PROP-008",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Roque S. Peña al 700", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 80000, moneda: "USD" },
+    descripcion: "Propiedad de 200 m2, semi construida. Cuenta con planos listos y aprobados. Excelente oportunidad para continuar construcción.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830402/bbr/prop-008/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830403/bbr/prop-008/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830404/bbr/prop-008/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 2, superficie_total: "200 m²", superficie_cubierta: "200 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  },
+  {
+    id: "PROP-009",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Colón al 1000", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 135000, moneda: "USD" },
+    descripcion: "Excelente ubicación en zona céntrica, en cercanias de dos colegios primarios, dos colegios secundarios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830405/bbr/prop-009/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830406/bbr/prop-009/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830407/bbr/prop-009/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "900 m²", superficie_cubierta: "80 m²" },
+    detalles: ["patio"]
+  },
+  {
+    id: "PROP-010",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "San Francisco Javier al 000", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 80000, moneda: "USD" },
+    descripcion: "Ubicada en la exclusiva zona de la costa a metros del Club Náutico y Pescadores de Ramallo (CNPR) y paseo del puerto.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830408/bbr/prop-010/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830409/bbr/prop-010/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830410/bbr/prop-010/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 3, banios: 1, superficie_total: "250 m²", superficie_cubierta: "120 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  },
+  {
+    id: "PROP-011",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "San Francisco Javier 2400", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 40000, moneda: "USD" },
+    descripcion: "Propiedad a construir/finalizar. Excelente oportunidad para continuar construcción y modelar/finalizar la propiedad a estilo y gusto propio.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830410/bbr/prop-011/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830412/bbr/prop-011/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830413/bbr/prop-011/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "429 m²", superficie_cubierta: "70 m²" },
+    detalles: ["patio"]
+  },
+  {
+    id: "PROP-012",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Av. Mitre al 1300", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 130000, moneda: "USD" },
+    descripcion: "Inmejorable ubicación en la zona céntrica de Ramallo, a metros del banco prov. de Bs. As., a plaza principal José María Bustos y varios e importantes locales comerciales.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830414/bbr/prop-012/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830414/bbr/prop-012/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830416/bbr/prop-012/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "570 m²", superficie_cubierta: "220 m²" },
+    detalles: ["cochera", "patio", "pileta", "quincho", "parrilla"]
+  },
+  {
+    id: "PROP-013",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Venta - El Paraiso",
+    direccion: { calle: "Martinez de Hoz esquina Felipe Olmedo", barrio: "El Paraiso", ciudad: "Ramallo" },
+    precio: { valor: 45000, moneda: "USD" },
+    descripcion: "Hermosa y pintoresca localidad rural de gran tranquilidad. La cabaña se encuentra ubicada a pocas cuadras de un colegio primario y un jardín de infantes.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830417/bbr/prop-013/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830418/bbr/prop-013/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830419/bbr/prop-013/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "400 m²", superficie_cubierta: "68 m²" },
+    detalles: ["patio", "pileta"]
+  },
+  {
+    id: "PROP-014",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Dr. Cucurullo al 400", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 55000, moneda: "USD" },
+    descripcion: "Zona de gran tranquilidad. Su excelente ubicación la encuentra en cercanías de un colegio primario y un jardín de infantes y 200 mts. de Av. San Martín, la principal arteria de la localidad.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830420/bbr/prop-014/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830422/bbr/prop-014/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830424/bbr/prop-014/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 3, banios: 1, superficie_total: "492 m²", superficie_cubierta: "132 m²" },
+    detalles: ["cochera", "patio", "pileta"]
+  },
+  {
+    id: "PROP-015",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Av. Moreno al 0", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 45000, moneda: "USD" },
+    descripcion: "Excelente de propiedad en zona de gran tranquilidad. Ubicada a cinco cuadras de dos colegios primarios, dos colegios secundarios y la plaza principal José María Bustos.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830425/bbr/prop-015/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830427/bbr/prop-015/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830429/bbr/prop-015/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "430 m²", superficie_cubierta: "65 m²" },
+    detalles: ["patio"]
+  },
+  {
+    id: "PROP-016",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Villa Ramallo",
+    direccion: { calle: "Traverso al 200", barrio: "Villa Ramallo", ciudad: "Villa Ramallo" },
+    precio: { valor: 70000, moneda: "USD" },
+    descripcion: "Excelente ubicación en zona residencial de Villa Ramallo. Cuenta con todos los servicios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830431/bbr/prop-016/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830434/bbr/prop-016/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830435/bbr/prop-016/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "351 m²", superficie_cubierta: "116 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  },
+  {
+    id: "PROP-017",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "San Francisco Javier al 100", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 78000, moneda: "USD" },
+    descripcion: "Ubicada en la exclusiva zona de la costa. A metros del Club Náutico y Pescadores de Ramallo (CNPR).",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830438/bbr/prop-017/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830440/bbr/prop-017/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830443/bbr/prop-017/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "250 m²", superficie_cubierta: "75 m²" },
+    detalles: ["patio"]
+  },
+  {
+    id: "PROP-018",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Rafael Obligado al 2300", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 120000, moneda: "USD" },
+    descripcion: "Zona de gran tranquilidad. Cuenta con todos los servicios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830446/bbr/prop-018/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830449/bbr/prop-018/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830451/bbr/prop-018/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 3, banios: 1, superficie_total: "792 m²", superficie_cubierta: "108 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  },
+  {
+    id: "PROP-019",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Av. B. Mitre al 200", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 110000, moneda: "USD" },
+    descripcion: "Propiedad en inmejorable ubicación en la zona de la costa, a metros del acceso al paseo del río, campings y balnearios. Cuenta con todos los servicios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830453/bbr/prop-019/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830455/bbr/prop-019/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830458/bbr/prop-019/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "100 m²", superficie_cubierta: "100 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  },
+  {
+    id: "PROP-020",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Buenos Aires al 300", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 160000, moneda: "USD" },
+    descripcion: "Excelente ubicación. Cuenta con todos los servicios, agua corriente, cloacas, electricidad y pavimento.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830460/bbr/prop-020/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830461/bbr/prop-020/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830462/bbr/prop-020/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "375 m²", superficie_cubierta: "100 m²" },
+    detalles: ["patio", "parrilla"]
+  },
+  {
+    id: "PROP-021",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Juan B. Justo al 900", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 140000, moneda: "USD" },
+    descripcion: "Propiedad totalmente nueva, dispone de cómodos espacios. Posee todos los servicios, agua corriente, gas, cloacas y pavimento.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830463/bbr/prop-021/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830464/bbr/prop-021/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830465/bbr/prop-021/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 3, banios: 1, superficie_total: "225 m²", superficie_cubierta: "180 m²" },
+    detalles: ["patio", "pileta"]
+  },
+  {
+    id: "PROP-022",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Salta al 600", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 150000, moneda: "USD" },
+    descripcion: "Excelente ubicación, Posee remodelaciones a nueva y dispone de cómodos espacios. Cuenta con todos los servicios.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830467/bbr/prop-022/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830468/bbr/prop-022/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830469/bbr/prop-022/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "250 m²", superficie_cubierta: "138 m²" },
+    detalles: ["pileta", "parrilla"]
+  },
+  {
+    id: "PROP-023",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Jujuy al 500", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 150000, moneda: "USD" },
+    descripcion: "Excelente ubicación, se encuentra en cercanías de un colegio primario, un colegio secundario y un jardín de infantes. Cuenta con todos los servicios, agua corriente, gas, cloacas y pavimento.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830470/bbr/prop-023/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830471/bbr/prop-023/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830472/bbr/prop-023/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 3, banios: 2, superficie_total: "200 m²", superficie_cubierta: "200 m²" },
+    detalles: ["cochera", "patio", "quincho", "parrilla"]
+  },
+  {
+    id: "PROP-024",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Colon al 1600", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 100000, moneda: "USD" },
+    descripcion: "Propiedad totalmente nueva. Cuenta además con local comercial al frente. Posee todos los servicios, agua corriente, gas, cloacas y pavimento.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830473/bbr/prop-024/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830474/bbr/prop-024/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830474/bbr/prop-024/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 3, banios: 1, superficie_total: "517 m²", superficie_cubierta: "126 m²" },
+    detalles: ["patio"]
+  },
+  {
+    id: "PROP-025",
+    tipo: "casa",
+    operacion: "venta",
+    titulo: "Casa Venta - Ramallo",
+    direccion: { calle: "Cordoba al 100", barrio: "Ramallo", ciudad: "Ramallo" },
+    precio: { valor: 120000, moneda: "USD" },
+    descripcion: "Excelente ubicación. Posee un espacio de 14 m2 para usos múltiples. Cuenta con todos los servicios, agua corriente, cloacas y electricidad.",
+    fotos: [
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830476/bbr/prop-025/foto01.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830477/bbr/prop-025/foto02.jpg",
+      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830479/bbr/prop-025/foto03.jpg"
+    ],
+    caracteristicas: { dormitorios: 2, banios: 1, superficie_total: "400 m²", superficie_cubierta: "126 m²" },
+    detalles: ["cochera", "patio", "parrilla"]
+  }
+];
+
+// Función para formatear precio
+const formatPrecio = (precio: {valor: number, moneda: string}) => {
+  return `${precio.moneda} ${precio.valor.toLocaleString('es-AR')}`;
+};
+---
+
+<section id="ventas-casas" class="py-20 bg-bbr-off-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="mb-16">
+      <span class="section-label text-bbr-green font-light text-lg uppercase tracking-wider">
+        Ventas
+      </span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-bbr-blue mt-4 mb-6">
+        Casas en Venta
+      </h2>
+      <p class="text-lg text-bbr-gray max-w-2xl">
+        Descubrí nuestra amplia selección de casas en las mejores zonas de Ramallo y alrededores.
+      </p>
+    </div>
+
+    <!-- Properties Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {casasVenta.map((propiedad) => (
+        <article class="property-card group" data-property-id={propiedad.id}>
+          <!-- Image Container -->
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img
+              src={propiedad.fotos[0]}
+              alt={propiedad.titulo}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              loading="lazy"
+            />
+            <!-- Badge -->
+            <span class="property-badge badge-venta">
+              Venta
+            </span>
+            <!-- Price -->
+            <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-lg">
+              <span class="text-lg font-bold text-bbr-blue">{formatPrecio(propiedad.precio)}</span>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <h3 class="property-title">
+              {propiedad.titulo}
+            </h3>
+            <p class="text-bbr-gray flex items-center gap-2 mb-4">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              {propiedad.direccion.calle}, {propiedad.direccion.ciudad}
+            </p>
+
+            <!-- Features -->
+            <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
+              {propiedad.caracteristicas.dormitorios && (
+                <div class="flex items-center gap-1 text-sm text-bbr-gray">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v11a1 1 0 001 1h16a1 1 0 001-1V7M3 7l9-4 9 4M12 22V11"/>
+                  </svg>
+                  <span>{propiedad.caracteristicas.dormitorios} dorm.</span>
+                </div>
+              )}
+              {propiedad.caracteristicas.banios && (
+                <div class="flex items-center gap-1 text-sm text-bbr-gray">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/>
+                  </svg>
+                  <span>{propiedad.caracteristicas.banios} baño{propiedad.caracteristicas.banios > 1 ? 's' : ''}</span>
+                </div>
+              )}
+              <div class="flex items-center gap-1 text-sm text-bbr-gray">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                </svg>
+                <span>{propiedad.caracteristicas.superficie_total}</span>
+              </div>
+              <button
+                class="property-link ver-detalle-btn"
+                data-property={JSON.stringify(propiedad)}
+              >
+                <span>Ver más</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
