@@ -40,7 +40,7 @@ const { title, description = "BBR Grupo Inmobiliario - Tu socio de confianza en 
           primaryColor: '#1e3a5f',
           botName: 'BBR Asistente',
           welcomeMessage: '¡Hola! Soy el asistente virtual de BBR Grupo Inmobiliario. ¿En qué puedo ayudarte?',
-          placeholderText: 'Escribe tu consulta...',
+          placeholderText: 'Busco una propiedad para comprar por menos de 100.000 USD',
           position: 'bottom-right',
           buttonSize: '80px',
           chatWidth: '500px',
@@ -60,6 +60,21 @@ const { title, description = "BBR Grupo Inmobiliario - Tu socio de confianza en 
       width: 80px !important;
       height: 80px !important;
       box-shadow: 0 6px 25px rgba(30, 58, 95, 0.5) !important;
+    }
+    /* Fix: eliminar línea vertical en el input del widget */
+    .chat-input-container,
+    .chat-input-container textarea,
+    .chat-input-container input,
+    .chat-input textarea,
+    .chat-input input {
+      border-right: none !important;
+      border-left: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    .chat-input-container {
+      border: 1px solid #e5e7eb !important;
+      border-radius: 25px !important;
     }
   </style>
 </body>
