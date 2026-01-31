@@ -1,7 +1,7 @@
 // Helper para obtener propiedades desde el JSON centralizado de GitHub
 // Esto permite que la landing se actualice automáticamente cuando se actualiza el JSON
 
-const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/elsampedrino/InmoBot-Platform/main/BBR%20Grupo%20Inmobiliario/propiedades_bbr.json';
+const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/elsampedrino/bot-inmobiliaria-data/main/propiedades_bbr.json';
 
 export interface Direccion {
   calle: string;
