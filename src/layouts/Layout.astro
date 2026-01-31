@@ -40,7 +40,7 @@ const { title, description = "BBR Grupo Inmobiliario - Tu socio de confianza en 
           primaryColor: '#1e3a5f',
           botName: 'BBR Asistente',
           welcomeMessage: '¡Hola! Soy el asistente virtual de BBR Grupo Inmobiliario. ¿En qué puedo ayudarte?',
-          placeholderText: 'Busco una propiedad para comprar por menos de 100.000 USD',
+          placeholderText: 'Busco una casa por menos de 100.000 USD',
           position: 'bottom-right',
           buttonSize: '80px',
           chatWidth: '500px',
@@ -48,6 +48,40 @@ const { title, description = "BBR Grupo Inmobiliario - Tu socio de confianza en 
         });
       }
     });
+  </script>
+
+  <!-- Fix: Asegurar que el scroll no quede bloqueado al navegar -->
+  <script>
+    // Restaurar scroll cuando se navega por anchors
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a[href^="#"]');
+      if (target) {
+        // Si no hay modal activo, asegurar que el body pueda hacer scroll
+        const modal = document.getElementById('property-modal');
+        if (!modal || !modal.classList.contains('active')) {
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+    // Restaurar scroll al hacer scroll con el mouse/touch
+    document.addEventListener('wheel', function() {
+      const modal = document.getElementById('property-modal');
+      if (!modal || !modal.classList.contains('active')) {
+        if (document.body.style.overflow === 'hidden') {
+          document.body.style.overflow = '';
+        }
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function() {
+      const modal = document.getElementById('property-modal');
+      if (!modal || !modal.classList.contains('active')) {
+        if (document.body.style.overflow === 'hidden') {
+          document.body.style.overflow = '';
+        }
+      }
+    }, { passive: true });
   </script>
 
   <!-- Ajuste para que el widget quede arriba de los otros botones flotantes -->

@@ -21,6 +21,7 @@
 /* Base styles */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Compensar el header fixed (96px + margen) */
   font-size: 18px; /* Base font size aumentado */
 }
 
