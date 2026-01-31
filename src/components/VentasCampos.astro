@@ -1,54 +1,9 @@
 ---
 // VentasCampos component - BBR Grupo Inmobiliario
-// Campos en Venta desde el catálogo de propiedades
+// Campos en Venta - Datos cargados desde GitHub JSON centralizado
+import { getCamposVenta } from '../lib/propiedades';
 
-const camposVenta = [
-  {
-    id: "PROP-031",
-    tipo: "campo",
-    operacion: "venta",
-    titulo: "Campo Venta - Pergamino",
-    direccion: { calle: "Zona rural, Pergamino", barrio: "Pergamino", ciudad: "Pergamino" },
-    precio: { valor: 532000, moneda: "USD" },
-    descripcion: "Muy buen campo productivo mixto. Excelente aptitud con terrenos altos, planos a suavemente ondulados. Excepcional potencial de rendimiento por las características edáficas y climáticas del lugar.",
-    fotos: [
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830515/bbr/prop-031/foto01.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830516/bbr/prop-031/foto02.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830518/bbr/prop-031/foto03.jpg"
-    ],
-    caracteristicas: { superficie_total: "76 Ha" }
-  },
-  {
-    id: "PROP-032",
-    tipo: "campo",
-    operacion: "venta",
-    titulo: "Campo Venta - Ramallo",
-    direccion: { calle: "Zona rural, Ramallo", barrio: "Ramallo", ciudad: "Ramallo" },
-    precio: { valor: 150000, moneda: "USD" },
-    descripcion: "Se caracteriza de plano a suavemente ondulado con potencial rendimiento por las características edáficas y climáticas del lugar. Apto para actividades agrícolas, pecuarias, apícolas, avícolas y cunícolas.",
-    fotos: [
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830519/bbr/prop-032/foto01.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830521/bbr/prop-032/foto02.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830523/bbr/prop-032/foto03.jpg"
-    ],
-    caracteristicas: { superficie_total: "7,2 Ha" }
-  },
-  {
-    id: "PROP-033",
-    tipo: "campo",
-    operacion: "venta",
-    titulo: "Campo Venta - Paraiso",
-    direccion: { calle: "Zona rural, El Paraiso", barrio: "El Paraiso", ciudad: "Ramallo" },
-    precio: { valor: 82200, moneda: "USD" },
-    descripcion: "Se caracteriza de plano a suavemente ondulado con potencial rendimiento por las características edáficas y climáticas del lugar. Apto para actividades agrícolas, pecuarias, apícolas, avícolas y cunícolas.",
-    fotos: [
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830525/bbr/prop-033/foto01.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830527/bbr/prop-033/foto02.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830529/bbr/prop-033/foto03.jpg"
-    ],
-    caracteristicas: { superficie_total: "9,76 Ha" }
-  }
-];
+const camposVenta = await getCamposVenta();
 
 // Función para formatear precio
 const formatPrecio = (precio: {valor: number, moneda: string}) => {

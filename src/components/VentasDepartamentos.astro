@@ -1,42 +1,9 @@
 ---
 // VentasDepartamentos component - BBR Grupo Inmobiliario
-// Departamentos en Venta desde el catálogo de propiedades
+// Departamentos en Venta - Datos cargados desde GitHub JSON centralizado
+import { getDepartamentosVenta } from '../lib/propiedades';
 
-const departamentosVenta = [
-  {
-    id: "PROP-026",
-    tipo: "departamento",
-    operacion: "venta",
-    titulo: "Departamento Venta - Villa Ramallo",
-    direccion: {
-      calle: "Av. San Martín y Clark",
-      barrio: "Villa Ramallo",
-      ciudad: "Villa Ramallo"
-    },
-    precio: {
-      valor: 80000,
-      moneda: "USD"
-    },
-    descripcion: "Edificio ubicado en zona céntrica y comercial de Villa Ramallo. Cuenta con todos los servicios.",
-    fotos: [
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830482/bbr/prop-026/foto01.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830484/bbr/prop-026/foto02.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830487/bbr/prop-026/foto03.jpg"
-    ],
-    caracteristicas: {
-      ambientes: 2,
-      dormitorios: 1,
-      banios: 1,
-      superficie_total: "60 m²",
-      superficie_cubierta: "60 m²"
-    },
-    detalles: [
-      "ascensor",
-      "balcon",
-      "baulera"
-    ]
-  }
-];
+const departamentosVenta = await getDepartamentosVenta();
 
 // Función para formatear precio
 const formatPrecio = (precio: {valor: number, moneda: string}) => {

@@ -1,39 +1,9 @@
 ---
 // Alquileres component - BBR Grupo Inmobiliario
-// Propiedades en Alquiler desde el catálogo
+// Propiedades en Alquiler - Datos cargados desde GitHub JSON centralizado
+import { getAlquileres } from '../lib/propiedades';
 
-const alquileres = [
-  {
-    id: "PROP-027",
-    tipo: "departamento",
-    operacion: "alquiler",
-    titulo: "Departamento Alquiler - Ramallo",
-    direccion: { calle: "J. B. Justo al 1500", barrio: "Ramallo", ciudad: "Ramallo" },
-    precio: { valor: 250000, moneda: "ARS" },
-    descripcion: "Excelente ubicación. En cercanías de escuelas primaria y secundaria y jardín de infantes. Dispone de todos los servicios.",
-    fotos: [
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830489/bbr/prop-027/foto01.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830492/bbr/prop-027/foto02.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830495/bbr/prop-027/foto03.jpg"
-    ],
-    caracteristicas: { ambientes: 2, dormitorios: 1, banios: 1, superficie_total: "30 m²", superficie_cubierta: "30 m²" }
-  },
-  {
-    id: "PROP-034",
-    tipo: "local comercial",
-    operacion: "alquiler",
-    titulo: "Local Comercial Alquiler - Ramallo",
-    direccion: { calle: "Salta al 900", barrio: "Ramallo", ciudad: "Ramallo" },
-    precio: { valor: 500000, moneda: "ARS" },
-    descripcion: "Excelente y amplio local en estratégica zona de la ciudad. Cuenta con todos los servicios.",
-    fotos: [
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830531/bbr/prop-034/foto01.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830533/bbr/prop-034/foto02.jpg",
-      "https://res.cloudinary.com/dikb9wzup/image/upload/v1766830536/bbr/prop-034/foto03.jpg"
-    ],
-    caracteristicas: { superficie_total: "200 m²", superficie_cubierta: "200 m²" }
-  }
-];
+const alquileres = await getAlquileres();
 
 // Función para formatear precio
 const formatPrecio = (precio: {valor: number, moneda: string}) => {
