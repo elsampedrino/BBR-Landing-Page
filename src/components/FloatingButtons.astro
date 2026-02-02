@@ -1,17 +1,19 @@
 ---
-// Floating Buttons component - BBR Grupo Inmobiliario
-// WhatsApp y Email flotantes - ARRIBA del widget
-// Orden de arriba a abajo: Email - WhatsApp - Widget
+// Floating Buttons component - Dinámico desde configuración
+import { getContacto, getWhatsAppUrl, getEmailUrl, getColores } from '../lib/config';
+
+const contacto = getContacto();
+const colores = getColores();
 ---
 
 <!-- Contenedor de botones flotantes - posicionado ARRIBA del widget -->
 <div class="floating-buttons-container">
   <!-- Email Button -->
   <a
-    href="mailto:bbrborrascabrucellaria@hotmail.com"
+    href={getEmailUrl()}
     class="floating-btn"
     title="Envianos un email"
-    style="background-color: #1e3a5f;"
+    style={`background-color: ${colores.secundario};`}
   >
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
@@ -20,7 +22,7 @@
 
   <!-- WhatsApp Button -->
   <a
-    href="https://wa.me/543407402776?text=Hola!%20Me%20gustaría%20consultar%20sobre%20propiedades"
+    href={getWhatsAppUrl()}
     target="_blank"
     rel="noopener noreferrer"
     class="floating-btn"

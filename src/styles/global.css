@@ -22,7 +22,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px; /* Compensar el header fixed (96px + margen) */
-  font-size: 18px; /* Base font size aumentado */
+  /* font-size se define dinámicamente desde config.json en Layout.astro */
 }
 
 body {
@@ -31,13 +31,6 @@ body {
   line-height: 1.6;
   font-size: 1rem;
   overflow-x: hidden; /* Para el efecto de línea extendida en labels */
-}
-
-/* Responsive font sizes */
-@media (max-width: 768px) {
-  html {
-    font-size: 16px;
-  }
 }
 
 /* Animations */
