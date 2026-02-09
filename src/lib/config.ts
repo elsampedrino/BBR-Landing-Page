@@ -64,7 +64,7 @@ export interface ConfigContacto {
   email: string;
   direccion: string;
   horarios: { semana: string; sabado: string };
-  formulario: { titulo: string; asunto_email: string; formspree_id: string };
+  formulario: { titulo: string; asunto_email: string; webhook_url: string; origen: string };
 }
 
 export interface ConfigRedesSociales {

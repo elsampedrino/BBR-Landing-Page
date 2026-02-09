@@ -121,15 +121,11 @@ const redes = getRedesSociales();
       <div class="bg-bbr-off-white rounded-2xl p-8 lg:p-10">
         <h3 class="text-2xl font-bold text-bbr-blue mb-6">{contacto.formulario.titulo}</h3>
         <form
+          id="contact-form"
           class="space-y-6"
-          action={`https://formspree.io/f/${contacto.formulario.formspree_id}`}
-          method="POST"
+          data-webhook-url={contacto.formulario.webhook_url}
+          data-origen={contacto.formulario.origen}
         >
-          <!-- Campo oculto para que al responder el email vaya al cliente -->
-          <input type="hidden" name="_replyto" id="replyto" />
-          <!-- Asunto del email -->
-          <input type="hidden" name="_subject" value={contacto.formulario.asunto_email} />
-
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label for="nombre" class="block text-sm font-medium text-bbr-gray-dark mb-2">
@@ -206,13 +202,17 @@ const redes = getRedesSociales();
 
           <button
             type="submit"
+            id="submit-btn"
             class="submit-btn"
           >
-            <span>Enviar mensaje</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span id="btn-text">Enviar mensaje</span>
+            <svg id="btn-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
             </svg>
           </button>
+
+          <!-- Mensaje de éxito/error -->
+          <div id="form-message" class="hidden text-center py-3 px-4 rounded-xl font-medium"></div>
         </form>
       </div>
     </div>
@@ -220,11 +220,53 @@ const redes = getRedesSociales();
 </section>
 
 <script>
-  // Sincronizar _replyto con el email del usuario
-  const emailInput = document.getElementById('email') as HTMLInputElement;
-  const replyTo = document.getElementById('replyto') as HTMLInputElement;
-  emailInput?.addEventListener('input', () => {
-    if (replyTo) replyTo.value = emailInput.value;
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text') as HTMLSpanElement;
+  const btnIcon = document.getElementById('btn-icon') as SVGElement;
+  const formMessage = document.getElementById('form-message') as HTMLDivElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const webhookUrl = form.dataset.webhookUrl;
+    const origen = form.dataset.origen;
+
+    if (!webhookUrl) return;
+
+    // Deshabilitar botón mientras envía
+    submitBtn.disabled = true;
+    btnText.textContent = 'Enviando...';
+    btnIcon.style.display = 'none';
+    formMessage.classList.add('hidden');
+
+    const formData = new FormData(form);
+    const data: Record<string, string> = { origen: origen || 'desconocido' };
+    formData.forEach((value, key) => { data[key] = value as string; });
+    data.timestamp = new Date().toISOString();
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        formMessage.textContent = '¡Mensaje enviado! Te contactaremos a la brevedad.';
+        formMessage.className = 'text-center py-3 px-4 rounded-xl font-medium bg-green-100 text-green-700';
+        form.reset();
+      } else {
+        throw new Error('Error en el envío');
+      }
+    } catch (error) {
+      formMessage.textContent = 'Hubo un error al enviar. Intentá de nuevo o contactanos por WhatsApp.';
+      formMessage.className = 'text-center py-3 px-4 rounded-xl font-medium bg-red-100 text-red-700';
+    } finally {
+      submitBtn.disabled = false;
+      btnText.textContent = 'Enviar mensaje';
+      btnIcon.style.display = '';
+    }
   });
 </script>
 

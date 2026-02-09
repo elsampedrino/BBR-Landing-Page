@@ -130,7 +130,8 @@
     "formulario": {
       "titulo": "Envianos tu consulta",
       "asunto_email": "Nueva consulta desde la web BBR",
-      "formspree_id": "TU_FORM_ID"
+      "webhook_url": "https://n8n-bot-inmobiliario.onrender.com/webhook/formulario-contacto",
+      "origen": "BBR"
     }
   },
 
