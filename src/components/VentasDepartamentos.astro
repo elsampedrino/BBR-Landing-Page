@@ -366,6 +366,7 @@ const capitalizar = (texto: string) => {
     const overlay = modal?.querySelector('.property-modal-overlay');
     const closeBtn = modal?.querySelector('.property-modal-close');
     const verDetalleBtns = document.querySelectorAll('.ver-detalle-btn');
+    let mapaInstance: any = null;
 
     // Abrir modal
     verDetalleBtns.forEach(btn => {
@@ -464,13 +465,14 @@ const capitalizar = (texto: string) => {
       if (lat && lng && mapaContainer && mapaDiv) {
         mapaContainer.style.display = 'block';
         setTimeout(() => {
-          // Si ya existe un mapa, lo destruimos y recreamos
-          if ((mapaDiv as any)._leaflet_id) {
-            (window as any).L.map(mapaDiv).remove();
+          // Destruir instancia previa correctamente usando la referencia guardada
+          if (mapaInstance) {
+            mapaInstance.remove();
+            mapaInstance = null;
             mapaDiv.innerHTML = '';
-            (mapaDiv as any)._leaflet_id = undefined;
           }
           const map = (window as any).L.map(mapaDiv, { zoomControl: true }).setView([lat, lng], 16);
+          mapaInstance = map;
           (window as any).L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             maxZoom: 19
